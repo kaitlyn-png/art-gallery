@@ -1,1 +1,191 @@
 /* NAV BAR STYLESHEET */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@600;700;800&display=swap");
+
+#navigation{
+    --nav-paper: #fcf8ff;
+    --nav-paper-shadow: #eadffd;
+    --nav-lilac-1: #d8b8ff;
+    --nav-lilac-2: #b986ee;
+    --nav-lilac-3: #9a6fd3;
+    --nav-ink: #352349;
+    --nav-shadow: rgba(67, 31, 100, 0.24);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: calc(100% - 36px);
+    margin: 14px auto 8px;
+    padding: 14px 16px;
+    border: 2px solid rgba(154, 111, 211, 0.34);
+    border-radius: 20px 28px 18px 30px;
+    background:
+        repeating-linear-gradient(
+            -7deg,
+            rgba(255, 255, 255, 0.5) 0 11px,
+            rgba(216, 184, 255, 0.26) 11px 22px
+        ),
+        linear-gradient(145deg, var(--nav-paper), var(--nav-paper-shadow));
+    box-shadow: 0 10px 30px var(--nav-shadow);
+    backdrop-filter: blur(3px);
+    font-family: "Nunito", "Trebuchet MS", sans-serif;
+    animation: nav-slide-in 520ms ease-out;
+    overflow: hidden;
+}
+
+#navigation::before,
+#navigation::after{
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 24px;
+    border-radius: 7px;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+#navigation::before{
+    left: 18px;
+    top: -8px;
+    transform: rotate(-11deg);
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.72));
+    border: 1px solid rgba(190, 164, 223, 0.48);
+}
+
+#navigation::after{
+    right: 26px;
+    bottom: -10px;
+    transform: rotate(9deg);
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.64));
+    border: 1px solid rgba(190, 164, 223, 0.45);
+}
+
+#navigation a{
+    position: relative;
+    z-index: 2;
+    color: var(--nav-ink);
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid rgba(154, 111, 211, 0.28);
+    border-radius: 12px 18px 14px 16px;
+    background-color: rgba(255, 255, 255, 0.62);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.015em;
+    text-transform: lowercase;
+    box-shadow: 0 3px 10px rgba(114, 69, 161, 0.11);
+    transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+#navigation .nav-item{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#navigation .nav-item::before{
+    display: inline-block;
+    font-family: "Caveat", cursive;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--nav-lilac-3);
+    transform: rotate(-9deg);
+    opacity: 0.95;
+}
+
+#navigation .nav-home::before{
+    content: "⌂";
+}
+
+#navigation .nav-about::before{
+    content: "✿";
+}
+
+#navigation .nav-artwork::before{
+    content: "✎";
+}
+
+#navigation .nav-projects::before{
+    content: "✂";
+}
+
+#navigation a:hover{
+    color: var(--nav-lilac-3);
+    border-color: rgba(154, 111, 211, 0.55);
+    background-color: rgba(244, 236, 255, 0.92);
+    box-shadow: 0 8px 18px rgba(114, 69, 161, 0.19);
+    transform: translateY(-4px) rotate(-1.6deg);
+}
+
+#navigation a:focus-visible{
+    outline: 3px solid rgba(154, 111, 211, 0.48);
+    outline-offset: 2px;
+}
+
+#current-page{
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 8px 18px;
+    border-radius: 14px 18px 12px 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.95);
+    background: linear-gradient(140deg, var(--nav-lilac-2), var(--nav-lilac-1));
+    color: #fffdfa;
+    font-family: "Caveat", "Trebuchet MS", cursive;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+    text-shadow: 0 1px 0 rgba(53, 35, 73, 0.18);
+    box-shadow: 0 8px 20px rgba(114, 69, 161, 0.34);
+    transform: rotate(-1.8deg);
+}
+
+#current-page::before{
+    color: #fffefa;
+}
+
+@keyframes nav-slide-in{
+    from{
+        opacity: 0;
+        transform: translateY(-18px) rotate(-0.6deg) scale(0.98);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+@media (max-width: 640px){
+    #navigation{
+        width: calc(100% - 20px);
+        margin-top: 8px;
+        padding: 10px;
+        gap: 8px;
+        border-radius: 16px;
+    }
+
+    #navigation a,
+    #current-page{
+        flex: 1 1 calc(50% - 8px);
+        text-align: center;
+        padding: 8px 10px;
+    }
+
+    #navigation .nav-item{
+        justify-content: center;
+    }
+
+    #navigation a{
+        font-size: 0.93rem;
+    }
+
+    #current-page{
+        font-size: 1.1rem;
+        transform: rotate(-1deg);
+    }
+}
