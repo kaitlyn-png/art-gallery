@@ -19,24 +19,69 @@
             <a href="src/pages/projects.html" class="nav-item nav-projects">projects</a>
         </nav>
         <!-- MAIN CONTENT -->
-        <div id="content">
-            <div id = "header-container">
-                <div id = "header-label">
-                    welcome to the art gallery of
-                </div>
-                <img id = "header-image" src="assets/images/kaitlynavalogo.png" alt="kaitlyn and ava logo">
-                <div id = "header-text">
-                    kaitlyn & ava
-                </div>
-            </div>
-            <div id = "info-container">
-                <div id = "about-container">
-                    <div class = "about-text">
-                        <!-- about us -->
+        <main id="content">
+            <section id="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <p class="eyebrow">art gallery</p>
+                    <h1 id="hero-title">kaitlyn and ava</h1>
+                    <p class="hero-description">
+                        two gamers, two artists, one shared vision: to create a vibrant online space where creativity thrives and art connects us all.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="src/pages/artwork.html">view artwork</a>
+                        <a class="button-secondary" href="src/pages/about.html">meet the artists</a>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="hero-art" aria-hidden="true">
+                    <div class="frame">
+                        <img id="header-image" src="assets/images/kaitlynavalogo.png" alt="kaitlyn and ava logo">
+                    </div>
+                </div>
+            </section>
+
+            <section id="highlights" aria-label="Gallery highlights">
+                <article class="highlight-card">
+                    <h2>new this month</h2>
+                    <p>Game development updates and fresh artwork releases.</p>
+                </article>
+                <article class="highlight-card">
+                    <h2>artist process</h2>
+                    <p>See behind-the-scenes snapshots from first idea to finished frame.</p>
+                </article>
+                <article class="highlight-card">
+                    <h2>coding projects</h2>
+                    <p>Explore our latest coding endeavors and innovative digital creations.</p>
+                </article>
+            </section>
+
+            <section id="featured" aria-labelledby="featured-title">
+                <h2 id="featured-title">featured pieces</h2>
+                <div class="featured-grid">
+                    <article class="feature-tile">
+                        <img src="assets/images/kaitlynavalogo.png" alt="featured collage preview">
+                        <div class="tile-content">
+                            <h3>artwork</h3>
+                            <p>artwork example</p>
+                        </div>
+                    </article>
+                    <article class="feature-tile">
+                        <img src="assets/images/kaitlynavalogo.png" alt="featured sketch preview">
+                        <div class="tile-content">
+                            <h3>artwork</h3>
+                            <p>artwork example</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="visit" aria-labelledby="visit-title">
+                <h2 id="visit-title">look around</h2>
+                <p>
+                    Browse our full online collection, discover project updates, and follow each new release.
+                </p>
+                <a class="button-primary" href="src/pages/projects.html">explore projects</a>
+            </section>
+        </main>
 
         <div id = "footer">
             <div>
