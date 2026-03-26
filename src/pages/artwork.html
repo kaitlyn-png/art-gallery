@@ -19,17 +19,83 @@
         </nav>
         <div id="content">
             <div id = "header-container">
+                <p class="header-chip">creative corner</p>
                 <div id = "header-label">
-                    artwork!
+                    <span class="label-pop">art</span>
+                    <span class="label-splash">work!</span>
                 </div>
                 <div id = "header-text">
-                    kaitlyn & ava
+                    by kaitlyn + ava
+                </div>
+                <div class="header-tags" aria-label="art styles">
+                    <span>sketch</span>
+                    <span>paint</span>
+                    <span>digital</span>
                 </div>
             </div>
             <div id = "info-container">
                 <div id = "artwork-container">
-                    <div class = "artwork-text">
-                        <!-- artwork -->
+                    <section class="gallery-section" aria-labelledby="kaitlyn-gallery-title">
+                        <h2 id="kaitlyn-gallery-title" class="gallery-title">kaitlyn's gallery</h2>
+                        <div class="gallery-grid">
+                            <!-- copy and paste this art card for each piece of artwork, updating the image src, alt text, title, and meta info as needed -->
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 01">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="kaitlyn untitled piece 01">
+                                </button>
+                                <h3 class="art-title">untitled piece 01</h3>
+                                <p class="art-meta">digital illustration</p>
+                            </article>
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 02">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="kaitlyn untitled piece 02">
+                                </button>
+                                <h3 class="art-title">untitled piece 02</h3>
+                                <p class="art-meta">mixed media</p>
+                            </article>
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 03">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="kaitlyn untitled piece 03">
+                                </button>
+                                <h3 class="art-title">untitled piece 03</h3>
+                                <p class="art-meta">acrylic study</p>
+                            </article>
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 04">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="kaitlyn untitled piece 04">
+                                </button>
+                                <h3 class="art-title">untitled piece 04</h3>
+                                <p class="art-meta">acrylic study</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="gallery-section" aria-labelledby="ava-gallery-title">
+                        <h2 id="ava-gallery-title" class="gallery-title">ava's gallery</h2>
+                        <div class="gallery-grid">
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 01">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="ava untitled piece 01">
+                                </button>
+                                <h3 class="art-title">untitled piece 01</h3>
+                                <p class="art-meta">digital collage</p>
+                            </article>
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 02">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="ava untitled piece 02">
+                                </button>
+                                <h3 class="art-title">untitled piece 02</h3>
+                                <p class="art-meta">ink sketch</p>
+                            </article>
+                            <article class="art-card">
+                                <button class="art-image-trigger" type="button" aria-label="Open untitled piece 03">
+                                    <img class="art-image" src="../../assets/images/kaitlynavalogo.png" alt="ava untitled piece 03">
+                                </button>
+                                <h3 class="art-title">untitled piece 03</h3>
+                                <p class="art-meta">character concept</p>
+                            </article>
+                        </div>
+                    </section>
                     </div>
                 </div>
             </div>
@@ -40,6 +106,59 @@
                 kaitlyn & ava &copy; 2026
             </div>
         </div>
+
+        <div id="lightbox" class="lightbox" aria-hidden="true">
+            <div class="lightbox-backdrop" data-close-lightbox></div>
+            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Enlarged artwork view">
+                <button class="lightbox-close" type="button" aria-label="Close image">x</button>
+                <img id="lightbox-image" src="" alt="">
+                <p id="lightbox-caption"></p>
+            </div>
+        </div>
+
+        <script>
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImage = document.getElementById("lightbox-image");
+            const lightboxCaption = document.getElementById("lightbox-caption");
+            const closeButton = document.querySelector(".lightbox-close");
+            const imageButtons = document.querySelectorAll(".art-image-trigger");
+            const backdrop = document.querySelector(".lightbox-backdrop");
+
+            function openLightbox(src, altText) {
+                lightboxImage.src = src;
+                lightboxImage.alt = altText;
+                lightboxCaption.textContent = altText;
+                lightbox.classList.add("is-open");
+                lightbox.setAttribute("aria-hidden", "false");
+                document.body.classList.add("lightbox-open");
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove("is-open");
+                lightbox.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("lightbox-open");
+                lightboxImage.src = "";
+            }
+
+            imageButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const image = button.querySelector("img");
+                    if (!image) {
+                        return;
+                    }
+                    openLightbox(image.src, image.alt || "Artwork image");
+                });
+            });
+
+            closeButton.addEventListener("click", closeLightbox);
+            backdrop.addEventListener("click", closeLightbox);
+
+            window.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+                    closeLightbox();
+                }
+            });
+        </script>
 
     </body>
 </html>
