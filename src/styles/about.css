@@ -190,6 +190,7 @@
 	text-transform: lowercase;
 	position: relative;
 	z-index: 1;
+	padding: 10px 0px;
 }
 
 .profile-socials {
